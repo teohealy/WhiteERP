@@ -2,13 +2,18 @@ package com.example.whiteerp;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.example.database.DataBaseHandler;
 import com.example.entities.Post;
 import com.example.entities.User;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -52,12 +57,12 @@ public class SignUpController {
     @FXML
     private Button signUpButton;
 
+
+
     @FXML
     void initialize() throws Exception {
 
-        DataBaseHandler dbHandler = new DataBaseHandler();
-        ObservableList<String> list = (ObservableList<String>) dbHandler.getPostNames();
-        cbPost.getItems().addAll(list);
+        cbPost.setItems(FXCollections.observableArrayList(getData()));
 
         signUpButton.setOnAction(actionEvent -> {
             signUpNewUser();
@@ -67,8 +72,24 @@ public class SignUpController {
     }
 
 
+    public List<String> getData() throws ClassNotFoundException, SQLException{
+        String table = "posts";
+        String column = "post_name";
+        DataBaseHandler dbHandler = new DataBaseHandler();
+        List<String> options = new ArrayList<>();
 
+        String selectQuery = "SELECT "+ column + " FROM " + table ;
+        PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(selectQuery);
+        ResultSet set = statement.executeQuery();
 
+        while(set.next()){
+            options.add(set.getString(column));
+        }
+        statement.close();
+        set.close();
+
+        return options;
+    }
 
     private void signUpNewUser(){
         DataBaseHandler dbHandler = new DataBaseHandler();

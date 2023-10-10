@@ -31,7 +31,7 @@ public class DataBaseHandler extends Configs{
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setString(3, user.getPost().getName());
+            preparedStatement.setInt(3, user.getPost().getId());
             preparedStatement.setString(4, user.getUsername());
             preparedStatement.setString(5, user.getPassword());
             preparedStatement.setString(6, user.getNumber());
