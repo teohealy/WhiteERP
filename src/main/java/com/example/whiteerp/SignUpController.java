@@ -1,5 +1,15 @@
 package com.example.whiteerp;
 
+import com.example.database.DataBaseHandler;
+import com.example.entities.Post;
+import com.example.entities.User;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,19 +17,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.example.database.DataBaseHandler;
-import com.example.entities.Post;
-import com.example.entities.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 
 public class SignUpController {
 
@@ -61,11 +58,21 @@ public class SignUpController {
 
     @FXML
     void initialize() throws Exception {
+        List<Post> postList = getPosts();
+        List<String> postNames = new ArrayList<>();
+        for(Post post: postList){
+            postNames.add(post.getName());
+        }
 
-        cbPost.setItems(FXCollections.observableArrayList(getData()));
+        List<String> postIds = new ArrayList<>();
+        for(Post post: postList){
+            postIds.add(Integer.toString(post.getId()));
+        }
+
+        cbPost.setItems(FXCollections.observableArrayList(postNames));
 
         signUpButton.setOnAction(actionEvent -> {
-            signUpNewUser();
+            signUpNewUser(postList, postNames);
 
         });
 
@@ -91,12 +98,37 @@ public class SignUpController {
         return options;
     }
 
-    private void signUpNewUser(){
+
+    public List<Post> getPosts() throws SQLException, ClassNotFoundException {
+        String table = "posts";
+        DataBaseHandler dbHandler = new DataBaseHandler();
+        List<Post> options = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + table ;
+        PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(selectQuery);
+        ResultSet set = statement.executeQuery();
+
+        while(set.next()){
+            int id = set.getInt(1);
+            String postName = set.getString(2);
+            Post post = new Post(postName);
+            post.setId(id);
+            options.add(post);
+        }
+        statement.close();
+        set.close();
+
+        return options;
+
+    }
+
+    private void signUpNewUser(List<Post> postList, List<String> postNames){
         DataBaseHandler dbHandler = new DataBaseHandler();
 
         String firstname = firstNameTextField.getText();
         String lastname = lastNameTextField.getText();
         String post = cbPost.getValue();
+        Post tempPost = postList.get(postNames.indexOf(post));
         String username = loginTextField.getText();
         String password = passwordTextField.getText();
         String number = numberTextField.getText();
@@ -107,8 +139,8 @@ public class SignUpController {
         }else
             gender = "Female";
 
-        Post postObject = new Post(post);
-        User user = new User(firstname, lastname, postObject, username, password, number, gender);
+        User user = new User(firstname, lastname, tempPost, username, password, number, gender);
+
 
         dbHandler.signUpUser(user);
 

@@ -24,18 +24,18 @@ public class DataBaseHandler extends Configs{
 
     public void signUpUser(User user){
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.USER_FIRST_NAME + "," + Const.USER_LAST_NAME + "," +
-                Const.USER_POST + "," + Const.USERNAME + "," + Const.USER_PASSWORD + ", " + Const.USER_NUMBER + "," +  Const.USER_GENDER+") " +
+                 Const.USERNAME + "," + Const.USER_PASSWORD + ", " + Const.USER_NUMBER + "," +  Const.USER_GENDER+"," + Const.USER_POST + ") " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try{
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setInt(3, user.getPost().getId());
-            preparedStatement.setString(4, user.getUsername());
-            preparedStatement.setString(5, user.getPassword());
-            preparedStatement.setString(6, user.getNumber());
-            preparedStatement.setString(7, user.getGender());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getNumber());
+            preparedStatement.setString(6, user.getGender());
+            preparedStatement.setInt(7, user.getPost().getId());
 
             preparedStatement.executeUpdate();
         }catch (Exception e){

@@ -1,8 +1,5 @@
 package com.example.entities;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class User {
     private String firstName;
     private String lastName;
@@ -16,7 +13,7 @@ public class User {
     public User(String firstName, String lastName, Post post, String username, String password, String number, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.post = new Post();
+        this.post = post;
         this.username = username;
         this.password = password;
         this.number = number;
