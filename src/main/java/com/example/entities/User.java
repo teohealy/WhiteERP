@@ -4,20 +4,20 @@ public class User {
     private String firstName;
     private String lastName;
 
-    private Post post = new Post();
     private String username;
     private String password;
     private String number;
     private String gender;
+    private Post post = new Post();
 
-    public User(String firstName, String lastName, Post post, String username, String password, String number, String gender) {
+    public User(String firstName, String lastName, String username, String password, String number, String gender, Post post) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.post = post;
         this.username = username;
         this.password = password;
         this.number = number;
         this.gender = gender;
+        this.post = post;
     }
 
     public User(){}

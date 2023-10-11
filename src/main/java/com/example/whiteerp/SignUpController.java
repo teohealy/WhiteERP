@@ -1,5 +1,6 @@
 package com.example.whiteerp;
 
+import com.example.ClassesImpl.PostImpl;
 import com.example.database.DataBaseHandler;
 import com.example.entities.Post;
 import com.example.entities.User;
@@ -55,19 +56,21 @@ public class SignUpController {
     private Button signUpButton;
 
 
+    private PostImpl postImpl = new PostImpl();
 
     @FXML
     void initialize() throws Exception {
-        List<Post> postList = getPosts();
+
+        List<Post> postList = postImpl.getAllPosts();
         List<String> postNames = new ArrayList<>();
         for(Post post: postList){
             postNames.add(post.getName());
         }
 
-        List<String> postIds = new ArrayList<>();
-        for(Post post: postList){
-            postIds.add(Integer.toString(post.getId()));
-        }
+//        List<String> postIds = new ArrayList<>();
+//        for(Post post: postList){
+//            postIds.add(Integer.toString(post.getId()));
+//        }
 
         cbPost.setItems(FXCollections.observableArrayList(postNames));
 
@@ -79,67 +82,50 @@ public class SignUpController {
     }
 
 
-    public List<String> getData() throws ClassNotFoundException, SQLException{
-        String table = "posts";
-        String column = "post_name";
-        DataBaseHandler dbHandler = new DataBaseHandler();
-        List<String> options = new ArrayList<>();
-
-        String selectQuery = "SELECT "+ column + " FROM " + table ;
-        PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(selectQuery);
-        ResultSet set = statement.executeQuery();
-
-        while(set.next()){
-            options.add(set.getString(column));
-        }
-        statement.close();
-        set.close();
-
-        return options;
-    }
 
 
-    public List<Post> getPosts() throws SQLException, ClassNotFoundException {
-        String table = "posts";
-        DataBaseHandler dbHandler = new DataBaseHandler();
-        List<Post> options = new ArrayList<>();
 
-        String selectQuery = "SELECT * FROM " + table ;
-        PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(selectQuery);
-        ResultSet set = statement.executeQuery();
-
-        while(set.next()){
-            int id = set.getInt(1);
-            String postName = set.getString(2);
-            Post post = new Post(postName);
-            post.setId(id);
-            options.add(post);
-        }
-        statement.close();
-        set.close();
-
-        return options;
-
-    }
+//    public List<Post> getPosts() throws SQLException, ClassNotFoundException {
+//        String table = "posts";
+//        DataBaseHandler dbHandler = new DataBaseHandler();
+//        List<Post> options = new ArrayList<>();
+//
+//        String selectQuery = "SELECT * FROM " + table ;
+//        PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(selectQuery);
+//        ResultSet set = statement.executeQuery();
+//
+//        while(set.next()){
+//            int id = set.getInt(1);
+//            String postName = set.getString(2);
+//            Post post = new Post(postName);
+//            post.setId(id);
+//            options.add(post);
+//        }
+//        statement.close();
+//        set.close();
+//
+//        return options;
+//
+//    }
 
     private void signUpNewUser(List<Post> postList, List<String> postNames){
         DataBaseHandler dbHandler = new DataBaseHandler();
 
         String firstname = firstNameTextField.getText();
         String lastname = lastNameTextField.getText();
-        String post = cbPost.getValue();
-        Post tempPost = postList.get(postNames.indexOf(post));
         String username = loginTextField.getText();
         String password = passwordTextField.getText();
         String number = numberTextField.getText();
         String gender = "";
-
         if (maleCheckBox.isSelected()){
             gender = "Male";
         }else
             gender = "Female";
+        String postNameText = cbPost.getValue();
+        Post tempPost = postList.get(postNames.indexOf(postNameText));
+        //Post post = postImpl.getPostById()
 
-        User user = new User(firstname, lastname, tempPost, username, password, number, gender);
+        User user = new User(firstname, lastname, username, password, number, gender, tempPost);
 
 
         dbHandler.signUpUser(user);

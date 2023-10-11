@@ -44,27 +44,27 @@ public class DataBaseHandler extends Configs{
     }
 
 
-    public List<String>getPostNames() throws Exception {
-        String post_name = new String("post_name");
-        String table_name = new String("posts");
-        ResultSet resultSet = null;
-        try {
-            String query = "SELECT " + post_name + " FROM " + table_name;
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
-            List<String> postNames = new ArrayList<>();
-            while (resultSet.next()) {
-                String postName = resultSet.getString("post_name");
-                postNames.add(postName);
-            }
-
-            return postNames;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public List<String>getPostNames() throws Exception {
+//        String post_name = new String("post_name");
+//        String table_name = new String("posts");
+//        ResultSet resultSet = null;
+//        try {
+//            String query = "SELECT " + post_name + " FROM " + table_name;
+//            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+//            resultSet = preparedStatement.executeQuery();
+//            List<String> postNames = new ArrayList<>();
+//            while (resultSet.next()) {
+//                String postName = resultSet.getString("post_name");
+//                postNames.add(postName);
+//            }
+//
+//            return postNames;
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } catch (ClassNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 
     public ResultSet getUser(User user){
