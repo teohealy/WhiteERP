@@ -10,4 +10,5 @@ public interface PostRepository {
     List<Post> getAllPosts() throws SQLException, ClassNotFoundException;
     Post getPostById(int id) throws SQLException, ClassNotFoundException;
 
+
 }

@@ -4,5 +4,8 @@ module com.example.whiteerp {
     requires java.sql;
 
     opens com.example.whiteerp to javafx.fxml;
+    opens com.example.entities to javafx.base;
     exports com.example.whiteerp;
+
+
 }

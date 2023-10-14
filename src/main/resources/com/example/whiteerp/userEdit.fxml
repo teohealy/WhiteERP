@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2C3E50;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.whiteerp.SignUpController">
+    <children>
+        <AnchorPane layoutY="90.0" prefHeight="310.0" prefWidth="700.0" style="-fx-background-color: #F7F9F9;">
+            <children>
+                <TextField fx:id="firstNameTextField" layoutX="32.0" layoutY="14.0" prefHeight="35.0" prefWidth="289.0" promptText="Имя" />
+                <TextField fx:id="lastNameTextField" layoutX="32.0" layoutY="66.0" prefHeight="35.0" prefWidth="289.0" promptText="Фамилия" />
+                <Button fx:id="signUpButton" layoutX="272.0" layoutY="227.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="157.0" style="-fx-background-color: #f1c40f;" text="Добавить ">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="loginTextField" layoutX="381.0" layoutY="14.0" prefHeight="35.0" prefWidth="289.0" promptText="Логин" />
+                <TextField fx:id="passwordTextField" layoutX="381.0" layoutY="66.0" prefHeight="35.0" prefWidth="289.0" promptText="Пароль" />
+                <TextField fx:id="numberTextField" layoutX="381.0" layoutY="120.0" prefHeight="35.0" prefWidth="289.0" promptText="Номер телефона" />
+                <CheckBox fx:id="maleCheckBox" layoutX="233.0" layoutY="183.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="Мужской">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </CheckBox>
+                <Label layoutX="107.0" layoutY="182.0" prefHeight="17.0" prefWidth="126.0" text="Выберите пол:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <CheckBox fx:id="femaleCheckBox" layoutX="351.0" layoutY="183.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" text="Женский">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </CheckBox>
+                <ComboBox fx:id="cbPost" layoutX="32.0" layoutY="125.0" prefHeight="35.0" prefWidth="289.0" promptText="Должность" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="114.0" layoutY="27.0" prefHeight="44.0" prefWidth="471.0" text="Изменение / Добавление сотрудника" textFill="#f7f9f9" wrapText="true">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

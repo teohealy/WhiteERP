@@ -81,12 +81,12 @@
         <Label layoutX="216.0" layoutY="14.0" text="Управление ресурсами стоматлогии" textFill="#696969" />
         <TabPane layoutX="208.0" layoutY="149.0" prefHeight="651.0" prefWidth="1003.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab fx:id="tabClients" text="Клиенты">
+                <Tab fx:id="tabClients" onSelectionChanged="#handleTabs" text="Клиенты">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
-                <Tab fx:id="tabUsers" text="Сотрудники">
+                <Tab fx:id="tabUsers" onSelectionChanged="#handleTabs" text="Сотрудники">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="543.0">
                      <children>
@@ -100,7 +100,7 @@
                                     <Insets left="20.0" />
                                  </padding>
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #186A3B;" text="Добавить" />
+                                    <Button fx:id="btnAddUser" mnemonicParsing="false" onAction="#handleUserTabButtons" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #186A3B;" text="Добавить" />
                                     <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #186A3B;" text="Изменить " />
                                     <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #186A3B;" text="Удалить" />
                                  </children>
@@ -109,7 +109,6 @@
                            <left>
                                         <TableView fx:id="tblUsers" prefHeight="581.0" prefWidth="1003.0" BorderPane.alignment="CENTER">
                                             <columns>
-                                                <TableColumn fx:id="tcUserId" prefWidth="26.000030517578125" text="ID" />
                                                 <TableColumn fx:id="tcUserName" prefWidth="118.66671752929688" style="#28B463: #28B463;" text="Имя" />
                                                 <TableColumn fx:id="tcUserLastName" prefWidth="176.66665649414062" text="Фамилия" />
                                                 <TableColumn fx:id="tcUserPost" prefWidth="86.0" text="Должность" />

@@ -54,19 +54,20 @@ public class UserImpl implements UserRepository {
     @Override
     public List<User> getAllUsers() throws SQLException, ClassNotFoundException {
         List<User> userList = new ArrayList<>();
-        String query = "SELECT * FROM" + TBL_USERS;
+        String query = "SELECT * FROM " + TBL_USERS;
         PreparedStatement statement = dbHandler.getDbConnection().prepareStatement(query);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()){
             User user = new User();
-            user.setFirstName(resultSet.getString(1));
-            user.setLastName(resultSet.getString(2));
-            user.setUsername(resultSet.getString(3));
-            user.setPassword(resultSet.getString(4));
-            user.setGender(resultSet.getString(5));
+            user.setFirstName(resultSet.getString(2));
+            user.setLastName(resultSet.getString(3));
+            user.setUsername(resultSet.getString(4));
+            user.setPassword(resultSet.getString(5));
+            user.setNumber(resultSet.getString(6));
+            user.setGender(resultSet.getString(7));
 
             PostImpl postImpl = new PostImpl();
-            Post post = postImpl.getPostById(resultSet.getInt(6));
+            Post post = postImpl.getPostById(resultSet.getInt(8));
             user.setPost(post);
 
             userList.add(user);
