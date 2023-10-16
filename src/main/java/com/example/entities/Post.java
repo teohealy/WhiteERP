@@ -1,6 +1,5 @@
 package com.example.entities;
 
-
 public class Post {
     private int id;
     private String name;

@@ -1,9 +1,8 @@
 package com.example.database;
+
 import com.example.entities.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataBaseHandler extends Configs{
     Connection dbConnection;

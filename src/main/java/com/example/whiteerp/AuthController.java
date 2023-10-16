@@ -17,12 +17,6 @@ import javafx.stage.Stage;
 public class AuthController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Button loginButton;
 
     @FXML
@@ -36,8 +30,6 @@ public class AuthController {
 
     @FXML
     void initialize() {
-
-
         loginButton.setOnAction(actionEvent -> {
             String userLogin = loginTextField.getText().trim();
             String userPassword = passwordTextField.getText().trim();

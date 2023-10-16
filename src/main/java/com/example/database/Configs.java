@@ -1,8 +1,5 @@
 package com.example.database;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Configs {
     protected String dbHost = "localhost";
     protected String dbPort = "5432";

@@ -1,6 +1,7 @@
 package com.example.entities;
 
 public class User {
+    private int id;
     private String firstName;
     private String lastName;
 
@@ -21,6 +22,10 @@ public class User {
     }
 
     public User(){}
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -50,6 +55,9 @@ public class User {
         this.gender = gender;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -76,6 +84,20 @@ public class User {
 
     public String getGender() {
         return gender;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", number='" + number + '\'' +
+                ", gender='" + gender + '\'' +
+                ", post=" + post +
+                '}';
     }
 }
 

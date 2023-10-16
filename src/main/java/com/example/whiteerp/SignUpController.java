@@ -28,14 +28,6 @@ import java.util.stream.Collectors;
 
 public class SignUpController {
 
-
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
     @FXML
     private ComboBox<Post> cbPost;
 

@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface UserRepository {
     void addUser(User user);
-    void updateUSer(User user);
-    void deleteUser(User user);
-    User getUserById(int userId);
+    void updateUser(User user);
+    void deleteUser(User user) throws SQLException, ClassNotFoundException;
 
     List<User> getAllUsers() throws SQLException, ClassNotFoundException;
 
