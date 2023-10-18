@@ -96,4 +96,29 @@ public class UserImpl implements UserRepository {
         }
         return userList;
     }
+
+    @Override
+    public User getUserById(int userId) throws SQLException, ClassNotFoundException {
+        User user = new User();
+        String query = "SELECT * FROM " + TBL_USERS + " WHERE user_id = ?";
+        connection = dbHandler.getDbConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()){
+            user.setFirstName(resultSet.getString(2));
+            user.setLastName(resultSet.getString(3));
+            user.setUsername(resultSet.getString(4));
+            user.setPassword(resultSet.getString(5));
+            user.setNumber(resultSet.getString(6));
+            user.setGender(resultSet.getString(7));
+
+            PostImpl postImpl = new PostImpl();
+            Post post = postImpl.getPostById(resultSet.getInt(8));
+            user.setPost(post);
+        }
+        return user;
+    }
 }

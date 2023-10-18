@@ -1,6 +1,6 @@
 package com.example.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 public class Client {
@@ -57,5 +57,10 @@ public class Client {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
     }
 }

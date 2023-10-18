@@ -98,6 +98,7 @@ public class UsersTabController {
         if (event.getSource() == btnAddUser){
             addUser();
             loadUsers();
+            clearFields();
         }
         if (event.getSource() == btnUpdateUser){
             updateUser();
@@ -165,7 +166,4 @@ public class UsersTabController {
         checkBoxFemale.setSelected(false);
         cbPost.getSelectionModel().clearSelection();
     }
-
-
-
 }

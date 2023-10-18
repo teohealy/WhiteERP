@@ -6,9 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 
 public class MainAppController {
 
@@ -22,7 +19,7 @@ public class MainAppController {
 
 
     @FXML
-    private Tab tabClients, tabUsers;
+    private Tab tabClients, tabUsers, tabSchedule;
 
     @FXML
     void initialize() {
@@ -42,6 +39,8 @@ public class MainAppController {
             lbStatus.setText("Клиенты");
         }
         if (event.getSource() == btnSchedule) {
+            tabSchedule.setClosable(true);
+            tabSchedule.getTabPane().getSelectionModel().select(tabSchedule);
             lbStatus.setText("Расписание");
         }
         if (event.getSource() == btnStock) {

@@ -2,29 +2,16 @@ package com.example.whiteerp;
 
 import com.example.ClassesImpl.PostImpl;
 import com.example.ClassesImpl.UserImpl;
-import com.example.database.DataBaseHandler;
 import com.example.entities.Post;
 import com.example.entities.User;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class SignUpController {
 

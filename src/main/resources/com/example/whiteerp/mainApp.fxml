@@ -5,12 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -79,12 +74,12 @@
                 </Label>
             </children>
         </Pane>
-        <Label layoutX="222.0" layoutY="6.0" text="Управление ресурсами стоматлогии" textFill="#696969" />
-        <TabPane fx:id="tabPane" layoutX="213.0" layoutY="121.0" prefHeight="716.0" prefWidth="1164.0" tabClosingPolicy="UNAVAILABLE">
+        <Label layoutX="222.0" layoutY="6.0" text="Управление ресурсами стоматологии" textFill="#696969" />
+        <TabPane fx:id="tabPane" layoutX="213.0" layoutY="121.0" prefHeight="730.0" prefWidth="1164.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab fx:id="tabClients" onSelectionChanged="#handleTabs" text="Клиенты">
                     <content>
-                        <fx:include source="clientsTab.fxml"/>
+                        <fx:include source="clientsTab.fxml" />
                     </content>
                 </Tab>
                 <Tab fx:id="tabUsers" onSelectionChanged="#handleTabs" text="Сотрудники">
@@ -92,9 +87,9 @@
                         <fx:include source="usersTab.fxml" />
                     </content>
                 </Tab>
-                <Tab text="Расписание">
+                <Tab fx:id="tabSchedule" text="Расписание">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <fx:include source="scheduleTab.fxml" />
                     </content>
                 </Tab>
                 <Tab text="Склад">

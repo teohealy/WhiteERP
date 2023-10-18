@@ -12,4 +12,6 @@ public interface UserRepository {
 
     List<User> getAllUsers() throws SQLException, ClassNotFoundException;
 
+    User getUserById(int userId) throws SQLException, ClassNotFoundException;
+
 }

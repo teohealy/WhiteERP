@@ -1,9 +1,5 @@
 package com.example.whiteerp;
 
-import java.net.URL;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
-
 import com.example.database.DataBaseHandler;
 import com.example.entities.User;
 import javafx.fxml.FXML;
@@ -13,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.sql.ResultSet;
 
 public class AuthController {
 
