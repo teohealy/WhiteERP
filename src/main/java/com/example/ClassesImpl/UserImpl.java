@@ -108,6 +108,7 @@ public class UserImpl implements UserRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()){
+            user.setId(resultSet.getInt(1));
             user.setFirstName(resultSet.getString(2));
             user.setLastName(resultSet.getString(3));
             user.setUsername(resultSet.getString(4));

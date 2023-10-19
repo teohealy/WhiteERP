@@ -7,10 +7,10 @@ public class Appointment {
     private Time startTime;
     private Time endTime;
 
-    private User user = new User();
-    private Client client = new Client();
-    private DailySchedule dailySchedule = new DailySchedule();
-    private Room room = new Room();
+    private User user;
+    private Client client;
+    private DailySchedule dailySchedule;
+    private Room room;
 
     public Appointment(Time startTime, Time endTime, User user, Client client, DailySchedule dailySchedule, Room room){
         this.startTime = startTime;

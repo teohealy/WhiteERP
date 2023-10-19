@@ -18,23 +18,49 @@ public class AppointmentImpl implements AppointmentRepository {
 
     @Override
     public List<Appointment> getAllAppointments() {
-        //init
         return null;
     }
 
     @Override
-    public void addAppointment(Appointment appointment) {
+    public void addAppointment(Appointment appointment) throws SQLException, ClassNotFoundException {
+        String query = "INSERT INTO " + TBL_APPOINTMENTS + "(appointment_start_time, appointment_end_time, user_id, client_id, daily_schedule_id, room_id)" +
+                " VALUES (?, ?, ?, ?, ?, ?)";
+        connection = dbHandler.getDbConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setTime(1, appointment.getStartTime());
+        preparedStatement.setTime(2, appointment.getEndTime());
+        preparedStatement.setInt(3, appointment.getUser().getId());
+        preparedStatement.setInt(4, appointment.getClient().getClientId());
+        preparedStatement.setInt(5, appointment.getDailySchedule().getId());
+        preparedStatement.setInt(6, appointment.getRoom().getId());
 
+        preparedStatement.executeUpdate();
     }
 
     @Override
     public void updateAppointment(Appointment appointment) throws SQLException, ClassNotFoundException {
+        String query = "UPDATE " + TBL_APPOINTMENTS + " SET appointment_start_time = ?, appointment_end_time = ?, user_id = ?, " +
+                "client_id = ?, daily_schedule_id = ?, room_id = ? WHERE appointment_id = ?";
+        connection = dbHandler.getDbConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setTime(1, appointment.getStartTime());
+        preparedStatement.setTime(2, appointment.getEndTime());
+        preparedStatement.setInt(3, appointment.getUser().getId());
+        preparedStatement.setInt(4, appointment.getClient().getClientId());
+        preparedStatement.setInt(5, appointment.getDailySchedule().getId());
+        preparedStatement.setInt(6, appointment.getRoom().getId());
+        preparedStatement.setInt(7, appointment.getId());
 
+        preparedStatement.executeUpdate();
     }
 
     @Override
     public void deleteAppointment(Appointment appointment) throws SQLException, ClassNotFoundException {
-
+        String query = "DELETE FROM " + TBL_APPOINTMENTS + " WHERE appointment_id = ?";
+        connection = dbHandler.getDbConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, appointment.getId());
+        preparedStatement.executeUpdate();
     }
 
     @Override
@@ -55,14 +81,14 @@ public class AppointmentImpl implements AppointmentRepository {
             int id = resultSet.getInt(1);
             Time startTime = resultSet.getTime(2);
             Time endTime = resultSet.getTime(3);
-            int userID = resultSet.getInt(4);
+            int userId = resultSet.getInt(4);
             int clientId = resultSet.getInt(5);
             int roomId = resultSet.getInt(7);
 
             appointment.setId(id);
             appointment.setStartTime(startTime);
             appointment.setEndTime(endTime);
-            appointment.setUser(userImpl.getUserById(userID));
+            appointment.setUser(userImpl.getUserById(userId));
             appointment.setClient(clientImpl.getClientById(clientId));
             appointment.setRoom(roomImpl.getRoomById(roomId));
             appointmentList.add(appointment);

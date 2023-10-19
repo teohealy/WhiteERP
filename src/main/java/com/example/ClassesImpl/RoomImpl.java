@@ -46,7 +46,7 @@ public class RoomImpl implements RoomRepository {
         while (resultSet.next()){
             int roomNumber = resultSet.getInt(2);
             room= new Room(roomNumber);
-            room.setId(roomId);
+            room.setId(resultSet.getInt(1));
         }
         return room;
     }

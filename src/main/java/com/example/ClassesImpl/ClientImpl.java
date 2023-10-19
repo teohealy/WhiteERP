@@ -86,6 +86,7 @@ public class ClientImpl implements ClientRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
+            client.setId(resultSet.getInt(1));
             client.setFirstName(resultSet.getString(2));
             client.setLastName(resultSet.getString(3));
             client.setDateBirth(resultSet.getDate(4));

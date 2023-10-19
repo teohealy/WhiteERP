@@ -38,13 +38,16 @@
                         <children>
                             <TextField fx:id="tfStartTime" layoutX="61.0" layoutY="22.0" prefHeight="25.0" prefWidth="170.0" promptText="Начало приема" />
                             <TextField fx:id="tfEndTime" layoutX="61.0" layoutY="59.0" prefHeight="25.0" prefWidth="170.0" promptText="Конец приема" />
-                            <ComboBox fx:id="cbUser" layoutX="260.0" layoutY="22.0" onMouseClicked="#fillComboBoxUser" prefHeight="25.0" prefWidth="170.0" promptText="Врач" />
-                            <ComboBox fx:id="cbClient" layoutX="260.0" layoutY="59.0" onMouseClicked="#fillComboBoxClient" prefHeight="25.0" prefWidth="170.0" promptText="Клиент" />
+                            <ComboBox fx:id="cbUser" layoutX="320.0" layoutY="22.0" onMouseClicked="#fillComboBoxUser" prefHeight="25.0" prefWidth="170.0" promptText="Врач" />
+                            <ComboBox fx:id="cbClient" layoutX="320.0" layoutY="59.0" onMouseClicked="#fillComboBoxClient" prefHeight="25.0" prefWidth="170.0" promptText="Клиент" />
                             <ComboBox fx:id="cbRoom" layoutX="175.0" layoutY="96.0" onMouseClicked="#fillComboBoxRoom" prefHeight="25.0" prefWidth="170.0" promptText="Кабинет" />
-                            <Button fx:id="btnAddAppointment" layoutX="884.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Добавить" />
-                            <Button fx:id="btnUpdateAppointment" layoutX="976.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Изменить" />
-                            <Button fx:id="btnDeleteAppointment" layoutX="1072.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Удалить" />
-                            <Button fx:id="btnClear" layoutX="1072.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Отчистить" />
+                            <Button fx:id="btnAddAppointment" layoutX="884.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleScheduleTabButtons" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Добавить" />
+                            <Button fx:id="btnUpdateAppointment" layoutX="976.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleScheduleTabButtons" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Изменить" />
+                            <Button fx:id="btnDeleteAppointment" layoutX="1072.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleScheduleTabButtons" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Удалить" />
+                            <Button fx:id="btnClear" layoutX="1072.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleScheduleTabButtons" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #f1c40f;" text="Отчистить" />
+                  <Label layoutX="270.0" layoutY="26.0" prefHeight="17.0" prefWidth="37.0" text="Врач:" />
+                  <Label layoutX="270.0" layoutY="63.0" prefHeight="17.0" prefWidth="50.0" text="Клиент:" />
+                  <Label layoutX="115.0" layoutY="100.0" prefHeight="17.0" prefWidth="50.0" text="Кабинет:" />
                         </children>
                     </Pane>
                 </bottom>

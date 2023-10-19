@@ -9,7 +9,7 @@ import java.util.List;
 public interface AppointmentRepository {
     List<Appointment> getAllAppointments();
 
-    void addAppointment(Appointment appointment);
+    void addAppointment(Appointment appointment) throws SQLException, ClassNotFoundException;
 
     void updateAppointment(Appointment appointment) throws SQLException, ClassNotFoundException;
     void deleteAppointment(Appointment appointment) throws SQLException, ClassNotFoundException;
