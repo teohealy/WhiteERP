@@ -43,21 +43,6 @@
                         <Insets left="30.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnDocuments" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleClicks" prefHeight="67.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;" text="Документы" textFill="WHITE">
-                    <padding>
-                        <Insets left="30.0" />
-                    </padding>
-                </Button>
-                <Button fx:id="btnMedicine" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleClicks" prefHeight="67.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;" text="Медицина" textFill="WHITE">
-                    <padding>
-                        <Insets left="30.0" />
-                    </padding>
-                </Button>
-                <Button fx:id="btnSalary" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleClicks" prefHeight="67.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;" text="Зарплаты" textFill="WHITE">
-                    <padding>
-                        <Insets left="30.0" />
-                    </padding>
-                </Button>
             </children>
         </VBox>
         <Pane fx:id="pnlStatus" layoutX="213.0" layoutY="33.0" prefHeight="77.0" prefWidth="1164.0" style="-fx-background-color: #2C3E50;">
@@ -87,27 +72,12 @@
                         <fx:include source="usersTab.fxml" />
                     </content>
                 </Tab>
-                <Tab fx:id="tabSchedule" text="Расписание">
+                <Tab fx:id="tabSchedule" onSelectionChanged="#handleTabs" text="Расписание">
                     <content>
                         <fx:include source="scheduleTab.fxml" />
                     </content>
                 </Tab>
                 <Tab text="Склад">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="Документы">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="Медицина">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="Зарплаты">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>

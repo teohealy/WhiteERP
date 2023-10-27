@@ -1,4 +1,4 @@
-package com.example.ClassesImpl;
+package com.example.implementations;
 
 import com.example.database.DataBaseHandler;
 import com.example.entities.Post;
@@ -122,4 +122,22 @@ public class UserImpl implements UserRepository {
         }
         return user;
     }
+
+    @Override
+    public ResultSet getUser(User user){
+        ResultSet resultSet = null;
+        try{
+            String query = "SELECT * FROM " + TBL_USERS + " WHERE username =? AND user_password=?";
+            connection = dbHandler.getDbConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+
+            resultSet = preparedStatement.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
 }

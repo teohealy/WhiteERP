@@ -1,4 +1,4 @@
-package com.example.ClassesImpl;
+package com.example.implementations;
 
 import com.example.database.DataBaseHandler;
 import com.example.entities.Appointment;

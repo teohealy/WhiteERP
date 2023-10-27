@@ -2,6 +2,7 @@ package com.example.whiteerp;
 
 import com.example.database.DataBaseHandler;
 import com.example.entities.User;
+import com.example.implementations.UserImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,12 +46,12 @@ public class AuthController {
     }
 
     private void toLoginUser(String userLogin, String userPassword){
-        DataBaseHandler dbHandler = new DataBaseHandler();
+        UserImpl userImpl = new UserImpl();
         User user = new User();
         user.setUsername(userLogin);
         user.setPassword(userPassword);
 
-        ResultSet result = dbHandler.getUser(user);
+        ResultSet result = userImpl.getUser(user);
 
         int counter = 0;
         try {

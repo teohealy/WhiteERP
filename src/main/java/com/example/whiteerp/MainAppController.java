@@ -43,18 +43,6 @@ public class MainAppController {
             tabSchedule.getTabPane().getSelectionModel().select(tabSchedule);
             lbStatus.setText("Расписание");
         }
-        if (event.getSource() == btnStock) {
-            lbStatus.setText("Склад");
-        }
-        if (event.getSource() == btnDocuments) {
-            lbStatus.setText("Документы");
-        }
-        if (event.getSource() == btnMedicine) {
-            lbStatus.setText("Медицина");
-        }
-        if (event.getSource() == btnSalary) {
-            lbStatus.setText("Зарплаты");
-        }
     }
 
 
@@ -62,6 +50,7 @@ public class MainAppController {
     private void handleTabs(){
         tabClients.setOnSelectionChanged(ActionEvent -> lbStatus.setText("Клиенты"));
         tabUsers.setOnSelectionChanged(event -> lbStatus.setText("Сотрудники"));
+        tabSchedule.setOnSelectionChanged(event -> lbStatus.setText("Расписание"));
     }
 
 }

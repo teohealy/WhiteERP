@@ -1,6 +1,6 @@
 package com.example.whiteerp;
 
-import com.example.ClassesImpl.ClientImpl;
+import com.example.implementations.ClientImpl;
 import com.example.entities.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

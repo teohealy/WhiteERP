@@ -19,24 +19,4 @@ public class DataBaseHandler extends Configs{
 
         return dbConnection;
     }
-
-
-    public ResultSet getUser(User user){
-        ResultSet resultSet = null;
-
-        try{
-            String query = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USERNAME + " =? AND " + Const.USER_PASSWORD + "=?";
-            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getPassword());
-
-            resultSet = preparedStatement.executeQuery();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return resultSet;
-    }
-
-
-
 }

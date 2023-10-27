@@ -1,7 +1,7 @@
 package com.example.whiteerp;
 
-import com.example.ClassesImpl.PostImpl;
-import com.example.ClassesImpl.UserImpl;
+import com.example.implementations.PostImpl;
+import com.example.implementations.UserImpl;
 import com.example.entities.Post;
 import com.example.entities.User;
 import javafx.collections.FXCollections;
